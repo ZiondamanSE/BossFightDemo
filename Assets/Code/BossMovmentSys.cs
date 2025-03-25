@@ -26,10 +26,10 @@ public class BossMovmentSys : MonoBehaviour
 
     void Update()
     {
-        mcdonaldsmeanforkidsorsomthingiforgot();
+       // mcdonaldsmeanforkidsorsomthingiforgot();
     }
 
-    void mcdonaldsmeanforkidsorsomthingiforgot()
+   /* void mcdonaldsmeanforkidsorsomthingiforgot()
     {
         if (moveHome)
             transform.position = new Vector2(Mathf.MoveTowards(transform.position.x, homePoint.transform.position.x, phaseOneMovmentspeed * Time.deltaTime),
@@ -44,7 +44,7 @@ public class BossMovmentSys : MonoBehaviour
             transform.position = new Vector2(Mathf.Lerp(transform.position.x, playerPoint.transform.position.x, phaseOneMovmentspeed * Time.deltaTime), transform.position.y);
 
         }
-    }
+    }*/
 
     IEnumerator HomeTime()
     {
@@ -62,7 +62,7 @@ public class BossMovmentSys : MonoBehaviour
 
     void Attack()
     {
-        transform.position = new Vector2.Lerp(transform.position, Vector2.down, phaseOneMovmentspeed * Time.deltaTime);
+       // transform.position = new Vector2.Lerp(transform.position, Vector2.down, phaseOneMovmentspeed * Time.deltaTime);
     }
 
 }

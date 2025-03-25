@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Search;
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     [Header("Player Movement")]
+    public float attackCooldown = 0.5f;
+    public float attackSpeed = 5.0f;
+    [Space]
     public float speed = 10.0f;
     public float movementDrag = 0.5f;
+    [Space]
     public float jumpForce = 900.0f;
     public float jumpDrag = 0.5f;
+    [Space]
     public float dashForce = 20.0f;
     public float dashingCooldown = 0.5f;
     [Space]
@@ -17,23 +23,30 @@ public class PlayerMovement : MonoBehaviour
     public float Gravity = 9.8f;
     [Space]
     public Vector2 raycastOffset;
+    
     private float inputX;
     private bool inputY;
     private bool dashInput;
     private bool mouseInput;
-    private float currentSpeed;
+
+    private bool canAttack;
     private bool isGrounded;
     private bool canDash = true;
+    private float currentSpeed;
     private Vector2 raycastOrigin;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        canAttack = true;
+        canDash = true;
     }
     // Update is called once per frame
     void Update()
     {
         MovementSystem();
+        if(mouseInput && !isGrounded && inputY)
+            attack();
     }
     private void FixedUpdate()
     {
@@ -71,6 +84,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
+
+    void attack()
+    {
+
+    }
     void dashMichanic() // fix dash direction
     {
         if (inputX > 0)
@@ -96,5 +114,12 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    IEnumerator AttackingCollodwn()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canAttack = true;
     }
 }
