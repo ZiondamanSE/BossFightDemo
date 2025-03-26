@@ -525,6 +525,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &720865338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 720865340}
+  - component: {fileID: 720865339}
+  m_Layer: 0
+  m_Name: w
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &720865339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720865338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8081ad2c5f280664a952275120b696b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject: {fileID: 6228591488497498327, guid: 7eaee8effd175ab418526e1d8b018b23, type: 3}
+--- !u!4 &720865340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720865338}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.09348285, y: 4.08, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &730273196
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,37 +727,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &983914305
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 983914306}
-  m_Layer: 0
-  m_Name: BossHoming
-  m_TagString: Untagged
-  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &983914306
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 983914305}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1056671963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,7 +1028,7 @@ GameObject:
   - component: {fileID: 1861137132}
   - component: {fileID: 1861137131}
   - component: {fileID: 1861137130}
-  - component: {fileID: 1861137129}
+  - component: {fileID: 1861137133}
   m_Layer: 0
   m_Name: Big Boss Man
   m_TagString: Untagged
@@ -1022,26 +1036,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1861137129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861137128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b73ab3f0d45e38242b7e5b253b42b1d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  homePoint: {fileID: 983914305}
-  playerPoint: {fileID: 2033557118}
-  phaseOneMovmentspeed: 10
-  phaseTwoMovmentspeed: 0
-  phaseThreeMovmentspeed: 0
-  phaseOneWaitTime: 0
-  phaseTwoWaitTime: 0
-  phaseThreeWaitTime: 0
 --- !u!61 &1861137130
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1154,6 +1148,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1861137133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861137128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551eb71828d7305449e82b345531d9d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHelth: 0
+  cunrentHelth: 0
 --- !u!1 &2033557118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,17 +1194,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccfcaae24dde6ae489d977994ce6bf18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0.5
-  attackSpeed: 5
+  Hitregg: {fileID: 0}
   speed: 10
   movementDrag: 0.5
   jumpForce: 12
   jumpDrag: 0.5
   dashForce: 10
   dashingCooldown: 1
+  attackCooldown: 0.5
+  attackSpeed: 5
+  attackDamige: 5
   raycastDistance: 0.1
   Gravity: 9.8
-  raycastOffset: {x: 0, y: -0.6}
+  raycastOffset: {x: 0, y: -0.84}
 --- !u!50 &2033557121
 Rigidbody2D:
   serializedVersion: 4
@@ -1310,4 +1320,4 @@ SceneRoots:
   - {fileID: 1056671967}
   - {fileID: 730273199}
   - {fileID: 1861137132}
-  - {fileID: 983914306}
+  - {fileID: 720865340}

@@ -5,11 +5,11 @@ using UnityEditor.Search;
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject Hitregg;
     Rigidbody2D rb;
+
+
     [Header("Player Movement")]
-    public float attackCooldown = 0.5f;
-    public float attackSpeed = 5.0f;
-    [Space]
     public float speed = 10.0f;
     public float movementDrag = 0.5f;
     [Space]
@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
     [Space]
     public float dashForce = 20.0f;
     public float dashingCooldown = 0.5f;
+    [Space]
+    public float attackCooldown = 0.5f;
+    public float attackSpeed = 5.0f;
+    public float attackDamige = 5.0f;
     [Space]
     public float raycastDistance = 0.1f;
     public float Gravity = 9.8f;
@@ -80,6 +84,43 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && inputY && !mouseInput)
             JumpingMechanic();
     }
+
+    void AnimashonReactor(Vector2 MovmentValues,bool AttackingInput)
+    {
+        if (MovmentValues.x != 0)
+        {
+            if (MovmentValues.x < 0)
+            {
+                // going left
+            }
+            else if (MovmentValues.x > 0)
+
+            {
+                // going Right
+            }
+        }
+
+        if(MovmentValues.y != 0)
+        {
+            if (MovmentValues.x < 0)
+            {
+                // going left
+            }
+            else if (MovmentValues.x > 0)
+            {
+                // going Right
+            }
+            else
+            {
+                // stight Up
+            }
+        }
+
+        if (AttackingInput && canAttack)
+        {
+            // attacking left
+        }
+    }
     void JumpingMechanic()
     {
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
@@ -87,8 +128,9 @@ public class PlayerMovement : MonoBehaviour
 
     void attack()
     {
-
+        AttackingCollodwn();
     }
+
     void dashMichanic() // fix dash direction
     {
         if (inputX > 0)
@@ -106,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator Attacking()
     {
-        currentSpeed = 5 * inputX;
+        currentSpeed = 2 * inputX;
         transform.Translate(new Vector3(currentSpeed * Time.deltaTime, 0, 0));
         yield return new WaitForSeconds(1f);
     }

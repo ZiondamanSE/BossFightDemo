@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerHelth : MonoBehaviour
 {
+    BossHelth bossHelth;
     public Slider helthSlider;
 
     public float maxHelth = 100;
@@ -14,6 +15,13 @@ public class PlayerHelth : MonoBehaviour
 
     void Start()
     {
+        bossHelth = GetComponent<BossHelth>();
+        if (bossHelth == null)
+        {
+            bossHelth = GameObject.FindObjectOfType<BossHelth>();
+            Debug.LogWarning("HealthParticle: PlayerHelth component not found! Make sure your player has the 'PlayerHelth' script.");
+        }
+
         currentHelth = maxHelth;
 
         helthSlider.maxValue = maxHelth;
@@ -24,7 +32,10 @@ public class PlayerHelth : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "DamageOBJ") // Needs fether work (Add a tag to the object that will deal damage to the player)
+        {
             HelthSystem(10, 0);
+            bossHelth.RageSystem(true, -5);
+        }
 
         if (collision.gameObject.tag == "HealingObject")
         {
