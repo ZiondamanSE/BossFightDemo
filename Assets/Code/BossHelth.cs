@@ -8,7 +8,7 @@ public class BossHelth : MonoBehaviour
     PlayerHelth playerHelth;
     public float maxHelth;
     public float cunrentHelth;
-    private float rage;
+    [HideInInspector]public float rage;
     private float rageDubbelr;
 
     private void Start()

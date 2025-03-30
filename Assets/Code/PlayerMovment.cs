@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEditor.Search;
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
+    public Animator animator;
     public GameObject Hitregg;
     Rigidbody2D rb;
-
 
     [Header("Player Movement")]
     public float speed = 10.0f;
@@ -49,8 +50,14 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         MovementSystem();
-        if(mouseInput && !isGrounded && inputY)
+        flip();
+
+        if (mouseInput && !isGrounded && inputY)
             attack();
+
+        animator.SetBool("Jump", !isGrounded);
+        animator.SetFloat("Speed", rb.velocity.x);
+        animator.SetBool("Attack", mouseInput);
     }
     private void FixedUpdate()
     {
@@ -60,9 +67,9 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(-transform.up * Gravity * Time.deltaTime, ForceMode2D.Force);
         rb.gravityScale = Gravity / 2   ;
     }
-    void InputManager()
+    void InputManager() 
     {
-        inputX = Input.GetAxis("Horizontal");
+        inputX = Input.GetAxisRaw("Horizontal");
         inputY = Input.GetKeyDown(KeyCode.Space);
         mouseInput = Input.GetMouseButtonDown(0);
         dashInput = Input.GetKeyDown(KeyCode.LeftShift);
@@ -70,62 +77,30 @@ public class PlayerMovement : MonoBehaviour
     void MovementSystem()
     {
         InputManager();
-        float CurrentSpeed = speed * inputX;
 
         if (mouseInput)
             StartCoroutine(Attacking());
-        else if (dashInput && canDash)
+        if (dashInput && canDash)
             dashMichanic();
-        else
-            transform.Translate(new Vector3(CurrentSpeed * movementDrag * Time.deltaTime, 0, 0));
+
+            rb.velocity = new Vector2(inputX * speed * movementDrag, rb.velocity.y);
 
         raycastOrigin = new Vector2(transform.position.x + raycastOffset.x, transform.position.y + raycastOffset.y);
         isGrounded = Physics2D.Raycast(raycastOrigin, Vector2.down, raycastDistance, LayerMask.GetMask("Ground"));
         if (isGrounded && inputY && !mouseInput)
             JumpingMechanic();
     }
-
-    void AnimashonReactor(Vector2 MovmentValues,bool AttackingInput)
-    {
-        if (MovmentValues.x != 0)
-        {
-            if (MovmentValues.x < 0)
-            {
-                // going left
-            }
-            else if (MovmentValues.x > 0)
-
-            {
-                // going Right
-            }
-        }
-
-        if(MovmentValues.y != 0)
-        {
-            if (MovmentValues.x < 0)
-            {
-                // going left
-            }
-            else if (MovmentValues.x > 0)
-            {
-                // going Right
-            }
-            else
-            {
-                // stight Up
-            }
-        }
-
-        if (AttackingInput && canAttack)
-        {
-            // attacking left
-        }
-    }
     void JumpingMechanic()
     {
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
-
+    void flip()
+    {
+        if (inputX > 0)
+            transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        else if (inputX < 0)
+            transform.localScale = new Vector3(-0.3f, 0.3f, 0.3f);
+    }
     void attack()
     {
         AttackingCollodwn();

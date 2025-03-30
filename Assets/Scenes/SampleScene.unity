@@ -549,7 +549,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720865338}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8081ad2c5f280664a952275120b696b3, type: 3}
   m_Name: 
@@ -1029,6 +1029,7 @@ GameObject:
   - component: {fileID: 1861137131}
   - component: {fileID: 1861137130}
   - component: {fileID: 1861137133}
+  - component: {fileID: 1861137134}
   m_Layer: 0
   m_Name: Big Boss Man
   m_TagString: Untagged
@@ -1160,8 +1161,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551eb71828d7305449e82b345531d9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHelth: 0
+  maxHelth: 100
   cunrentHelth: 0
+  rage: 0
+--- !u!114 &1861137134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861137128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 407db5fd43df760408d7272e6340d17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossHelth: {fileID: 1861137133}
+  player: {fileID: 2033557118}
+  speed: 10
 --- !u!1 &2033557118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,6 +1211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccfcaae24dde6ae489d977994ce6bf18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 258159031}
   Hitregg: {fileID: 0}
   speed: 10
   movementDrag: 0.5
